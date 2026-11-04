@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2efe6"/><circle cx="400" cy="300" r="150" fill="#e5e0d2"/>
+  <path d="M330 330 q0-90 70-90 q70 0 70 90 q0 40-30 45 l0 25 q-40 20-80 0 l0-25 q-30-5-30-45z" fill="#8ba888"/>
+  <circle cx="360" cy="300" r="10" fill="#f2efe6"/><circle cx="400" cy="296" r="10" fill="#f2efe6"/>
+  <path d="M385 335 q15 12 30 0" stroke="#f2efe6" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="400" y="520" text-anchor="middle" font-family="serif" font-size="30" fill="#7a8a76">图片整理中 · 动物</text>
+</svg>

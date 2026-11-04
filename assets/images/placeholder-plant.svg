@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2efe6"/><circle cx="400" cy="300" r="150" fill="#e5e0d2"/>
+  <path d="M400 390 v-150" stroke="#7d9a78" stroke-width="10" stroke-linecap="round"/>
+  <path d="M400 300 q-90-20-95-110 q80 10 95 110z" fill="#8ba888"/>
+  <path d="M400 330 q90-20 95-110 q-80 10-95 110z" fill="#9db89a"/>
+  <path d="M400 250 q-60-35-50-105 q60 25 50 105z" fill="#7d9a78"/>
+  <text x="400" y="520" text-anchor="middle" font-family="serif" font-size="30" fill="#7a8a76">图片整理中 · 植物</text>
+</svg>
