@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zhouhuaiqin.github.io/-/sitemap.xml

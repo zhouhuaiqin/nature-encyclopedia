@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自然图鉴 · 动植物百科图典</title>
+  <meta name="description" content="自然图鉴：收录 2658 个物种的中文动植物百科，按界门纲目科属精细分类，配物种图片、详细科普与趣味知识。">
+  <link rel="canonical" href="https://zhouhuaiqin.github.io/-/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="自然图鉴">
+  <meta property="og:title" content="自然图鉴 · 动植物百科图典">
+  <meta property="og:description" content="2658 个物种的中文动植物百科，按界门纲目科属分类，配图片与科普。">
+  <meta property="og:url" content="https://zhouhuaiqin.github.io/-/">
+  <meta property="og:image" content="https://zhouhuaiqin.github.io/-/assets/images/animals/mammal-giant-panda.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"自然图鉴","url":"https://zhouhuaiqin.github.io/-/","potentialAction":{"@type":"SearchAction","target":"https://zhouhuaiqin.github.io/-/search.html?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+  <meta name="theme-color" content="#f5f1e8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316382a'/%3E%3Cpath d='M22 9c0 7-5 11-10 11 0-7 5-11 10-11zM11 21c2-3 4-5 7-7' fill='none' stroke='%23c8a96b' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#browse">跳到物种图录</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-head" id="topbar">
+    <div class="wrap head-inner">
+      <a class="brand" href="#/" aria-label="自然图鉴首页">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 44 44" width="44" height="44" fill="none">
+            <rect width="44" height="44" rx="12" fill="#16382a"/>
+            <path d="M31 12c0 11-7.2 17-14.3 17C17 17.9 24.2 12 31 12Z" fill="#f5f1e8" opacity=".94"/>
+            <path d="M14 32c2.9-4.9 6.2-8.2 11-11.5" stroke="#c8a96b" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__title">自然图鉴</span>
+          <span class="brand__en">NATURAL ATLAS</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <button class="navlink is-active" type="button" data-nav="animals">动物界<span class="navlink__en">ANIMALIA</span></button>
+        <button class="navlink" type="button" data-nav="plants">植物与菌物<span class="navlink__en">FLORA</span></button>
+        <button class="navlink navlink--tree" type="button" id="nav-tree">分类树<span class="navlink__en">TAXONOMY</span></button>
+      </nav>
+
+      <div class="head-tools">
+        <button class="head-random" id="random-species" type="button" aria-label="随机漫游一个物种" title="随机漫游">
+          <svg viewBox="0 0 20 20" width="17" height="17" fill="none" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="15" height="15" rx="3.4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="7" cy="7" r="1.15" fill="currentColor"/><circle cx="13" cy="7" r="1.15" fill="currentColor"/>
+            <circle cx="7" cy="13" r="1.15" fill="currentColor"/><circle cx="13" cy="13" r="1.15" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="search" role="search">
+          <svg class="search__icon" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+            <circle cx="8.6" cy="8.6" r="5.4" stroke="currentColor" stroke-width="1.6"/>
+            <path d="m12.8 12.8 4.2 4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <input class="search__input" id="search-input" type="search" placeholder="搜索物种 / 学名 / 标签…" autocomplete="off" spellcheck="false" aria-label="搜索物种">
+          <kbd class="search__kbd">/</kbd>
+          <button class="search__clear" id="search-clear" type="button" aria-label="清除搜索" hidden>&times;</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ COVER ============ -->
+    <section class="cover" aria-labelledby="cover-title">
+      <div class="wrap cover-inner">
+        <div class="cover-text" data-reveal>
+          <p class="kicker"><span class="kicker__line"></span>VOL. 03 · 自然志 · 2658 SPECIES</p>
+          <h1 class="cover-title" id="cover-title">自然<span class="cover-title__alt">图鉴</span></h1>
+          <p class="cover-subtitle">动植物百科图典 <i>·</i> A Field Atlas of Life</p>
+          <p class="cover-lead" id="hero-intro"></p>
+          <div class="cover-cta">
+            <a class="btn btn--solid" href="#browse">开始浏览 <span aria-hidden="true">→</span></a>
+            <button class="btn btn--ghost" type="button" id="open-taxonomy">打开分类树</button>
+            <button class="btn btn--ghost btn--wander" type="button" id="random-hero">
+              <svg viewBox="0 0 20 20" width="15" height="15" fill="none" aria-hidden="true"><path d="M3 10h4l2.5-5 3 10L15 10h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              随机漫游
+            </button>
+          </div>
+          <dl class="cover-stats" aria-label="收录统计">
+            <div><dd id="stat-total">0</dd><dt>收录物种 Species</dt></div>
+            <div><dd id="stat-animals">0</dd><dt>动物 Animals</dt></div>
+            <div><dd id="stat-plants">0</dd><dt>植物与菌物 Flora</dt></div>
+            <div><dd id="stat-families">0</dd><dt>科 Families</dt></div>
+          </dl>
+        </div>
+
+        <div class="cover-gallery" id="cover-gallery" aria-hidden="true"></div>
+      </div>
+      <div class="wrap cover-foot">
+        <span class="cover-foot__index">界 · 门 · 纲 · 目 · 科 · 属</span>
+        <span class="cover-foot__scroll">SCROLL TO EXPLORE ↓</span>
+      </div>
+    </section>
+
+    <!-- ============ SPECIES OF THE DAY ============ -->
+    <section class="daily" aria-labelledby="daily-title">
+      <div class="wrap daily-inner">
+        <div class="daily-intro" data-reveal>
+          <p class="kicker kicker--gold">SPECIES OF THE DAY</p>
+          <h2 class="daily-title" id="daily-title">今日物种</h2>
+          <p class="daily-note" id="daily-date"></p>
+          <p class="daily-text">每天从 2658 个物种中抽取一位主角——可能是雨林里的蛙，也可能是餐桌上的谷物。</p>
+        </div>
+        <a class="daily-card" id="daily-card" href="#browse" data-reveal aria-label="今日物种"></a>
+      </div>
+    </section>
+
+    <!-- ============ CATEGORY OVERVIEW ============ -->
+    <section class="section section--collection" id="categories" aria-labelledby="cat-title">
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">01</span>
+          <div class="sec-head__main">
+            <p class="kicker">THE COLLECTION</p>
+            <h2 class="sec-title" id="cat-title">分类总览</h2>
+          </div>
+          <p class="sec-desc">18 个类群，按「界—门—纲—目—科—属」层层收纳。<br>点击卡片进入对应类群。</p>
+        </header>
+        <div class="cat-grid" id="category-grid" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ============ TAXONOMY CONSTELLATION ============ -->
+    <section class="section section--starmap" id="starmap" aria-labelledby="starmap-title">
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">02</span>
+          <div class="sec-head__main">
+            <p class="kicker">TAXONOMY CONSTELLATION</p>
+            <h2 class="sec-title" id="starmap-title">分类星图</h2>
+          </div>
+          <p class="sec-desc">18 个类群像星座一样铺开：圆圈越大，物种越多。<br>悬停辨认，点击进入该类群。</p>
+        </header>
+        <div class="star-map" id="star-map" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ============ ECOLOGICAL WEB ============ -->
+    <section class="section section--web" id="relations" aria-labelledby="web-title">
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">03</span>
+          <div class="sec-head__main">
+            <p class="kicker">ECOLOGICAL WEB</p>
+            <h2 class="sec-title" id="web-title">生命之网</h2>
+          </div>
+          <p class="sec-desc">选择一个物种，查看它与其他物种的直接关系：谁吃谁、谁帮谁、谁寄生谁。<br>颜色代表关系类型，箭头代表方向；点击右侧卡片可切换到该物种。</p>
+        </header>
+        <div class="web-toolbar" data-reveal>
+          <div class="chips chips--web" id="relation-chips"></div>
+          <span class="web-count" id="relation-count"></span>
+        </div>
+        <div class="rel-explorer" id="relation-graph" data-reveal></div>
+        <p class="web-legend" id="relation-legend"></p>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED RAIL ============ -->
+    <section class="featured" aria-labelledby="feat-title">
+      <div class="wrap">
+        <header class="sec-head sec-head--onDark" data-reveal>
+          <span class="sec-num">04</span>
+          <div class="sec-head__main">
+            <p class="kicker kicker--gold">CURATOR'S PICKS</p>
+            <h2 class="sec-title" id="feat-title">策展精选</h2>
+          </div>
+          <p class="sec-desc">十件来自不同大陆、不同尺度的自然标本——从国宝到微光里的真菌。</p>
+        </header>
+        <div class="featured-nav">
+          <button type="button" id="featured-prev" aria-label="上一组精选">←</button>
+          <button type="button" id="featured-next" aria-label="下一组精选">→</button>
+        </div>
+      </div>
+      <div class="featured-track" id="featured-track" data-reveal></div>
+    </section>
+
+    <!-- ============ BROWSE ============ -->
+    <section class="section section--browse" id="browse" aria-labelledby="browse-title">
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">05</span>
+          <div class="sec-head__main">
+            <p class="kicker">THE ATLAS</p>
+            <h2 class="sec-title" id="browse-title">物种图录</h2>
+          </div>
+          <p class="sec-desc" id="section-desc"></p>
+        </header>
+
+        <div class="taxon-bar" data-reveal>
+          <div class="chips" id="category-chips" role="toolbar" aria-label="分类筛选"></div>
+          <div class="subchips-row" id="subchips-row" hidden>
+            <span class="subchips-label">细分</span>
+            <div class="chips chips--sub" id="subcategory-chips"></div>
+          </div>
+          <div class="taxon-bar__meta">
+            <span class="result-count" id="result-count" role="status" aria-live="polite"></span>
+            <button class="reset-btn" id="reset-filters" type="button">清除全部筛选</button>
+          </div>
+          <div class="active-filters" id="active-filters" hidden></div>
+        </div>
+
+        <div class="grid" id="species-grid"></div>
+
+        <div class="more-wrap" id="more-wrap" hidden>
+          <button class="more-btn" id="load-more" type="button">显示更多物种</button>
+          <span class="more-info" id="more-info"></span>
+        </div>
+
+        <div class="empty" id="empty-state" hidden>
+          <div class="empty__art" aria-hidden="true">
+            <svg viewBox="0 0 120 120" width="92" height="92" fill="none">
+              <circle cx="60" cy="60" r="46" stroke="#d9d2bf" stroke-width="1.4" stroke-dasharray="3 6"/>
+              <path d="M73 40c0 20-12 30-24 30 0-20 12-30 24-30Z" fill="#e6dfcc"/>
+              <path d="M36 84c8-12 16-21 26-28" stroke="#c9c2ae" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="empty__title">没有找到匹配的物种</h3>
+          <p class="empty__text">试试更短的关键词，或清除分类 / 分类树筛选后再看看。</p>
+          <button class="btn btn--solid" type="button" id="empty-reset">显示全部物种</button>
+        </div>
+
+        <div class="grid-foot">
+          <span class="grid-foot__line" aria-hidden="true"></span>
+          <span class="grid-foot__text" id="grid-foot-text"></span>
+          <span class="grid-foot__line" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="manifesto" aria-labelledby="about-title">
+      <div class="wrap manifesto-inner">
+        <div class="manifesto-lead" data-reveal>
+          <p class="kicker kicker--gold">ABOUT THIS ATLAS</p>
+          <blockquote class="manifesto-quote">「认识一只鸟的名字，<br>世界就多出一扇窗。」</blockquote>
+          <p class="manifesto-text">本图鉴按「界—门—纲—目—科—属」整理物种档案：共收录 2658 个物种，动物 1534 种、植物与菌物 1124 种，覆盖 18 个类群、数百个科。每个物种都配有代表照片、分类地位、形态与习性数据、趣味知识和科普介绍，适合随手翻阅，也适合按分类树逐层检索。</p>
+        </div>
+        <ul class="manifesto-points">
+          <li data-reveal><span class="idx">A</span><div><h3>层层细分</h3><p>18 个顶层类群之下，可按「目」「科」继续细分筛选，或直接展开完整的分类树。</p></div></li>
+          <li data-reveal><span class="idx">B</span><div><h3>图文对照</h3><p>2600+ 张本地图片对应 2658 个物种，点开卡片可查看完整档案与图源信息。</p></div></li>
+          <li data-reveal><span class="idx">C</span><div><h3>离线可读</h3><p>纯静态页面，双击即可打开，不需要联网，也不收集任何数据。</p></div></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-top">
+      <p class="foot-wordmark">NATURAL<br>ATLAS</p>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="#browse">物种图录</a>
+        <a href="#/animals">动物界</a>
+        <a href="#/plants">植物与菌物</a>
+        <a href="#categories">分类总览</a>
+        <a href="species/index.html">全部物种（静态页）</a>
+        <a href="search.html">站内搜索</a>
+        <button type="button" id="foot-taxonomy">分类树</button>
+      </nav>
+      <div class="foot-meta">
+        <p>物种照片来自 <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer">iNaturalist</a> 公开资料，作者与许可信息见每个物种详情页。本站为<strong>非商业性学习与科普展示</strong>：CC 许可图片按其条款署名使用；「保留所有权利 / 禁止演绎」类图片已替换或移除；每个物种只使用本种照片，暂无合法来源时使用本站自绘占位图。如需商业使用，请先逐一核实并替换相应图片。</p>
+        <p>文字内容据公开科普资料整理，并由 AI 辅助编写，未经专业分类学审订，仅供学习参考，不作为科研、法律或保护决策依据。</p>
+        <p class="foot-copy">© <span id="footer-year">2026</span> 自然图鉴 · 本地离线版 · VOL. 03</p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>界 · 门 · 纲 · 目 · 科 · 属</span>
+      <span id="foot-stats">2658 物种 / 18 分类</span>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" type="button" aria-label="回到顶部" hidden>
+    <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+      <path d="M10 16V4M4.5 9.5 10 4l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- ============ TAXONOMY OVERLAY ============ -->
+  <div class="taxon-overlay" id="taxon-overlay" hidden>
+    <div class="taxon-panel" role="dialog" aria-modal="true" aria-labelledby="taxon-title">
+      <header class="taxon-head">
+        <div>
+          <p class="kicker">TAXONOMIC TREE</p>
+          <h2 id="taxon-title">分类树</h2>
+        </div>
+        <button class="icon-btn" id="taxon-close" type="button" aria-label="关闭分类树">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+      <p class="taxon-hint">展开「界 → 门 → 纲 → 目 → 科」，点击任一名称即可筛选该分支下的全部物种。</p>
+      <div class="taxon-body">
+        <aside class="taxon-side" aria-live="polite">
+          <p class="taxon-side__label">当前选择</p>
+          <p class="taxon-side__path" id="taxon-path">尚未选择</p>
+          <p class="taxon-side__count" id="taxon-count">2658 个物种</p>
+          <div class="taxon-side__actions">
+            <button class="btn btn--solid btn--sm" type="button" id="taxon-apply" disabled>查看这类物种</button>
+            <button class="btn btn--ghost btn--sm" type="button" id="taxon-clear" disabled>清除选择</button>
+          </div>
+        </aside>
+        <div class="taxon-tree" id="taxon-tree"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SPECIES MODAL ============ -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close="1"></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <button class="modal__close" id="modal-close" type="button" aria-label="关闭详情">
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__scroll" id="modal-scroll">
+        <div class="detail">
+          <figure class="detail__media">
+            <div class="detail__imgwrap">
+              <img id="modal-image" src="" alt="">
+              <span class="detail__badge" id="modal-badge"></span>
+            </div>
+            <figcaption class="detail__credit" id="modal-credit"></figcaption>
+          </figure>
+          <div class="detail__body">
+            <p class="detail__kicker" id="modal-kicker"></p>
+            <h2 class="detail__title" id="modal-title"></h2>
+            <p class="detail__latin" id="modal-latin"></p>
+            <p class="detail__aliases" id="modal-aliases"></p>
+            <p class="detail__summary" id="modal-summary"></p>
+            <dl class="detail__specs" id="modal-specs"></dl>
+            <div class="detail__section">
+              <h3 class="detail__heading"><span>物种志</span><i></i></h3>
+              <div class="detail__desc" id="modal-desc"></div>
+            </div>
+            <div class="detail__section">
+              <h3 class="detail__heading"><span>分类地位</span><i></i></h3>
+              <ol class="taxon-chain" id="modal-taxonomy"></ol>
+            </div>
+            <div class="detail__section" id="modal-relations-section">
+              <h3 class="detail__heading"><span>生态关系</span><i></i></h3>
+              <ul class="relation-list" id="modal-relations"></ul>
+            </div>
+            <div class="detail__section">
+              <h3 class="detail__heading"><span>趣味知识</span><i></i></h3>
+              <ol class="facts" id="modal-facts"></ol>
+            </div>
+            <div class="detail__section">
+              <h3 class="detail__heading"><span>标签</span><i></i></h3>
+              <ul class="detail__tags" id="modal-tags"></ul>
+            </div>
+            <div class="detail__nav">
+              <button class="detail__navbtn" id="modal-prev" type="button">
+                <span class="detail__navdir">← 上一个</span>
+                <span class="detail__navname" id="modal-prev-name"></span>
+              </button>
+              <span class="detail__navindex" id="modal-index"></span>
+              <button class="detail__navbtn detail__navbtn--next" id="modal-next" type="button">
+                <span class="detail__navdir">下一个 →</span>
+                <span class="detail__navname" id="modal-next-name"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data-core.js"></script>
+  <script src="data/meta.js"></script>
+  <script src="data/animals/01-mammals.js"></script>
+  <script src="data/animals/02-birds.js"></script>
+  <script src="data/animals/03-reptiles.js"></script>
+  <script src="data/animals/04-amphibians.js"></script>
+  <script src="data/animals/05-fish.js"></script>
+  <script src="data/animals/06-insects.js"></script>
+  <script src="data/animals/06b-insects-extra.js"></script>
+  <script src="data/animals/06c-insects-extra.js"></script>
+  <script src="data/animals/06d-insects-extra2.js"></script>
+  <script src="data/animals/06e-insects-extra3.js"></script>
+  <script src="data/animals/07-arachnids.js"></script>
+  <script src="data/animals/08-crustaceans.js"></script>
+  <script src="data/animals/09-mollusks.js"></script>
+  <script src="data/animals/10-other-invertebrates.js"></script>
+  <script src="data/plants/01-trees.js"></script>
+  <script src="data/plants/02-shrubs.js"></script>
+  <script src="data/plants/03-flowers.js"></script>
+  <script src="data/plants/04-succulents.js"></script>
+  <script src="data/plants/05-aquatic.js"></script>
+  <script src="data/plants/06-ferns-gymnosperms.js"></script>
+  <script src="data/plants/07-crops.js"></script>
+  <script src="data/plants/08-fungi.js"></script>
+  <script src="data/plants/08b-fungi-extra.js"></script>
+  <script src="data/plants/08c-fungi-extra2.js"></script>
+  <script src="data/relations.js"></script>
+  <script src="js/image-credits.js"></script>
+  <script src="js/app.js"></script>
+
+
+</body>
+</html>
