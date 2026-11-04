@@ -29,15 +29,16 @@ git remote add origin https://github.com/你的用户名/nature-encyclopedia.git
 git push -u origin main
 ```
 
-> 仓库约 315 MB，首次推送较慢；若嫌大，先把 `assets/images` 转 WebP 再推。
+> 仓库约 200–220 MB（图片已转 WebP），首次推送较慢但仍在 GitHub Pages 1 GB 限制内。
 
 ## 2. 开启 Pages
 1. 仓库 **Settings → Pages**
-2. **Build and deployment → Source** 选 **GitHub Actions**
-3. 等 Actions 里的 “Deploy to GitHub Pages” 跑完
-4. 访问 `https://你的用户名.github.io/nature-encyclopedia/`
+2. **Build and deployment → Source** 选 **Deploy from a branch**
+3. Branch 选 **main**，目录选 **/(root)**，保存
+4. 等 1–2 分钟构建完成，访问 `https://你的用户名.github.io/nature-encyclopedia/`
 
-工作流会自动重新生成 `species/*.html`、`sitemap.xml`、`search-index.js` 并部署。
+> 本项目使用「从 main 分支直接发布」，不依赖 GitHub Actions；每次 `git push` 到 main 会自动重建。`.nojekyll` 已启用，避免 Jekyll 处理。
+
 
 ## 3. 让搜索引擎收录
 部署成功后，把 sitemap 提交给搜索引擎：
