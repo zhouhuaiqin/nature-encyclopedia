@@ -7,9 +7,9 @@ window.SITE = {
   subtitle: "动植物百科图典",
   tagline: "把整个自然，收进一册图鉴",
   intro:
-    "从雪线之上的雪豹到雨林深处的蓝闪蝶，从两亿年前的银杏到餐桌上的稻米——2658 份生命档案，按界、门、纲、目、科、属层层展开。这是一册可以慢慢翻的自然志，也是一座纸上的自然博物馆。",
-  version: "3.5",
-  regions: 2658
+    "从雪线之上的雪豹到雨林深处的蓝闪蝶，从两亿年前的银杏到餐桌上的稻米——2663 份生命档案，动物、植物与菌物三界并列，按界、门、纲、目、科、属层层展开。这是一册可以慢慢翻的自然志，也是一座纸上的自然博物馆。",
+  version: "3.9",
+  regions: 2663
 };
 
 window.TABS = [
@@ -17,15 +17,22 @@ window.TABS = [
     code: "animals",
     name: "动物界",
     short: "动物",
-    icon: "🦌",
+    icon: "🐾",
     blurb: "从平原到深海，从甲虫到蓝鲸——恒温的、变温的、会飞会游会打洞的动物邻居。"
   },
   {
     code: "plants",
-    name: "植物与菌物",
+    name: "植物界",
     short: "植物",
     icon: "🌿",
-    blurb: "乔木、花草、多肉、水生与真菌——不会移动，却供养着整个星球的生命。"
+    blurb: "乔木、花草、多肉、水生与蕨类——不会移动，却供养着整个星球的生命。"
+  },
+  {
+    code: "fungi",
+    name: "菌物界",
+    short: "菌物",
+    icon: "🍄",
+    blurb: "从食用菌、虫草到酵母与霉菌——独立于动植物的生命界，分解者与共生者。"
   }
 ];
 
@@ -47,7 +54,7 @@ window.CATEGORIES = [
   { code: "aquatic", name: "水生植物", tab: "plants", kingdom: "植物界", icon: "🪷", blurb: "生于水中或湿地、形态各异的植物" },
   { code: "ferns-gymnosperms", name: "蕨类与裸子植物", tab: "plants", kingdom: "植物界", icon: "🌲", blurb: "以孢子或裸露种子繁殖的古老植物" },
   { code: "crops", name: "农作物与经济植物", tab: "plants", kingdom: "植物界", icon: "🌾", blurb: "供养人类衣食的栽培植物" },
-  { code: "fungi", name: "真菌", tab: "plants", kingdom: "真菌界", icon: "🍄", blurb: "菌物界：从食用菌到虫草的神奇生命" }
+  { code: "fungi", name: "真菌", tab: "fungi", kingdom: "真菌界", icon: "🍄", blurb: "菌物界：从食用菌到虫草的神奇生命" }
 ];
 
 window.CATEGORY_MAP = {};

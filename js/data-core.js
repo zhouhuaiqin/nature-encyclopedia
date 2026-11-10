@@ -5,7 +5,7 @@
 (function () {
   "use strict";
 
-  var store = { animals: [], plants: [], loaded: false };
+  var store = { animals: [], plants: [], fungi: [], loaded: false };
   var seen = Object.create(null);
 
   function warn(msg) {
@@ -18,7 +18,7 @@
 
   /** 注册一批物种。tab = "animals" | "plants" */
   window.registerSpecies = function (tab, list) {
-    if (tab !== "animals" && tab !== "plants") {
+    if (tab !== "animals" && tab !== "plants" && tab !== "fungi") {
       warn("未知 tab：" + tab);
       return;
     }
@@ -52,13 +52,13 @@
 
   /** 物种图片相对路径 */
   window.speciesImage = function (entry) {
-    var tab = entry && entry.tab === "plants" ? "plants" : "animals";
+    var tab = entry && entry.tab === "animals" ? "animals" : "plants";
     return "assets/images/" + tab + "/" + entry.id + ".webp";
   };
 
   /** 图片占位符相对路径 */
   window.speciesPlaceholder = function (entry) {
-    var tab = entry && entry.tab === "plants" ? "plants" : "animals";
+    var tab = entry && entry.tab === "animals" ? "animals" : "plants";
     return "assets/images/placeholder-" + (tab === "animals" ? "animal" : "plant") + ".svg";
   };
 

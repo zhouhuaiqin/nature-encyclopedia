@@ -1,6 +1,6 @@
 /* 真菌（菌物界）| 12 种 */
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-shiitake",
     name: "香菇",
@@ -178,7 +178,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-lions-mane",
     name: "猴头菇",
@@ -356,7 +356,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-common-puffball",
     name: "网纹马勃",
@@ -527,7 +527,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-split-gill",
     name: "裂褶菌",
@@ -698,7 +698,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-rhizopus",
     name: "米根霉",
@@ -869,7 +869,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-importuna-morel",
     name: "梯棱羊肚菌",
@@ -1082,7 +1082,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-peziza",
     name: "盘菌",
@@ -1294,7 +1294,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-chicken-of-the-woods",
     name: "硫磺菌",
@@ -1507,7 +1507,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-xiuzhen-mushroom",
     name: "秀珍菇",

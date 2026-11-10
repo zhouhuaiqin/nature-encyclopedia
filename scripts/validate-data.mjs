@@ -111,8 +111,8 @@ for (const dir of ["data/animals", "data/plants"]) {
 if (!dataFiles.length) err("未发现任何数据文件（data/animals、data/plants）");
 dataFiles.forEach(loadJS);
 
-const store = sandbox.window.ENCYCLOPEDIA || { animals: [], plants: [] };
-const all = [...store.animals, ...store.plants];
+const store = sandbox.window.ENCYCLOPEDIA || { animals: [], plants: [], fungi: [] };
+const all = [...store.animals, ...store.plants, ...(store.fungi || [])];
 const byId = new Map(all.map((e) => [e.id, e]));
 
 /* ---------- 图片版权表 ---------- */
@@ -197,7 +197,8 @@ function validateEntry(e) {
 
   /* 图片 */
   if (checkImages) {
-    const imgRel = `assets/images/${e.tab}/${e.id}.webp`;
+    const imgTab = e.tab === "animals" ? "animals" : "plants";
+    const imgRel = `assets/images/${imgTab}/${e.id}.webp`;
     const imgAbs = path.join(ROOT, imgRel);
     if (!fs.existsSync(imgAbs)) err(`${tag}：图片缺失 ${imgRel}`);
     else if (fs.statSync(imgAbs).size < 4000) err(`${tag}：图片过小 ${imgRel}`);

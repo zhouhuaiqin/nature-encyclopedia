@@ -5,7 +5,7 @@
 ## 1. 项目目标
 
 做一个**纯静态、可在本地直接双击打开**的中文动植物百科网站（file:// 协议可用，不依赖任何服务器/网络/外部 CDN）。
-共收录 **2658 个物种**：动物 1534 种（10 个分类）+ 植物与菌物 1124 种（8 个分类）。
+共收录 **2663 个物种**：动物 1535 种（10 个分类）+ 植物与菌物 1124 种（8 个分类）。
 每个物种必须有：中文名、拉丁学名、分类地位（界门纲目科属）、简介、详细描述、特征数据、趣味知识、**一张本地图片**。
 页面要求：简洁、工整、信息密度高、响应式、有分类筛选与全站搜索、详情弹层。
 
@@ -135,9 +135,9 @@ registerSpecies("plants",  [ {…}, {…} ]);   // 植物/真菌文件
 | aquatic | 水生植物 | plants | 05-aquatic.js | 87 |
 | ferns-gymnosperms | 蕨类与裸子植物 | plants | 06-ferns-gymnosperms.js | 88 |
 | crops | 农作物与经济植物 | plants | 07-crops.js | 144 |
-| fungi | 真菌（菌物界） | plants | 08-fungi.js + 08b + 08c | 213 |
+| fungi | 真菌（菌物界） | fungi | 08-fungi.js + 08b + 08c | 215 |
 
-**物种清单唯一来源**：`plan/species*.json` —— 初始总表 `species-animals.json` / `species-plants.json`，扩编分表 `species-animals-add1~add12.json`、`species-plants-add1~add8.json`（合计 2658 种）。
+**物种清单唯一来源**：`plan/species*.json` —— 初始总表 `species-animals.json` / `species-plants.json`，扩编分表 `species-animals-add1~add12.json`、`species-plants-add1~add8.json`（合计 2663 种）。
 格式：`{"tab":"animals","species":[["id","中文名","学名","分类代码","目标数据文件"], ...]}`（初始总表没有第 5 项）。
 写数据前先读 plan 分表，按**第 5 项目标数据文件**筛选出自己负责的物种，逐一收录，**不得遗漏、不得新增、不得改 id/name/latin**。
 如认为 plan 有误（学名拼写等），先按 plan 写，然后把问题报告 Lead 裁定。

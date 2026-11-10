@@ -1,7 +1,7 @@
 /* 真菌（菌物界）| 30 种 */
 /* 数据编写：data-birds。字段契约见 ROOT/SPEC.md。 */
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-saffron-milk-cap",
     name: "松乳菇",
@@ -244,7 +244,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-white-truffle",
     name: "白松露",
@@ -487,7 +487,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-cordyceps-militaris",
     name: "蛹虫草",
@@ -730,7 +730,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-colletotrichum",
     name: "胶孢炭疽菌",
@@ -913,7 +913,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-brown-birch-bolete",
     name: "褐疣柄牛肝菌",
@@ -1140,7 +1140,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-yellow-amanita",
     name: "黄盖鹅膏",
@@ -1367,7 +1367,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-fusarium-oxysporum",
     name: "尖孢镰刀菌",
@@ -1594,7 +1594,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-usnea",
     name: "松萝",
@@ -1807,7 +1807,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-almond-mushroom",
     name: "姬松茸",
@@ -2020,7 +2020,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-trichoderma",
     name: "绿色木霉",
@@ -2233,7 +2233,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-bitorquis",
     name: "大肥菇",

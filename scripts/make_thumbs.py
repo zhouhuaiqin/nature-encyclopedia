@@ -21,9 +21,9 @@ def one(p):
         if im.mode not in ("RGB", "L"):
             im = im.convert("RGB")
         w, h = im.size
-        if w > 420:
-            im = im.resize((420, max(1, round(h * 420 / w))), Image.LANCZOS)
-        im.save(dst, "WEBP", quality=72, method=4)
+        if w > 600:
+            im = im.resize((600, max(1, round(h * 600 / w))), Image.LANCZOS)
+        im.save(dst, "WEBP", quality=78, method=4)
         return (True, src.stat().st_size, dst.stat().st_size)
     except Exception as exc:  # noqa: BLE001
         return (False, str(src), str(exc))

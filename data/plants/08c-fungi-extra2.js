@@ -1,6 +1,6 @@
 /* 昆虫扩编 3（v3.1）：数据由子任务分批追加到本行之前 */
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-conica-morel",
     name: "尖顶羊肚菌",
@@ -264,7 +264,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-dealbata-clitocybe",
     name: "白霜杯伞",
@@ -528,7 +528,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-tubaeformis-chanterelle",
     name: "管状鸡油菌",
@@ -792,7 +792,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-sinuatum-entoloma",
     name: "毒粉褶菌",
@@ -1056,7 +1056,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-pyriforme-lycoperdon",
     name: "梨形马勃",
@@ -1320,7 +1320,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-canis-microsporum",
     name: "犬小孢子菌",
@@ -1584,7 +1584,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-brassicae-plasmodiophora",
     name: "十字花科根肿菌",
@@ -1819,7 +1819,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-rimosa-amanita",
     name: "裂皮鹅膏",
@@ -1938,7 +1938,7 @@ registerSpecies("plants", [
   }
 ]);
 
-registerSpecies("plants", [
+registerSpecies("fungi", [
   {
     id: "fungus-red-belt-conk",
     name: "红缘拟层孔菌",

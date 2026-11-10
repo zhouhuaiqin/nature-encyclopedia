@@ -12,7 +12,8 @@
   var SITE = window.SITE || { title: "自然图鉴", subtitle: "动植物百科图典" };
   var TABS = window.TABS || [
     { code: "animals", name: "动物界" },
-    { code: "plants", name: "植物界" }
+    { code: "plants", name: "植物界" },
+    { code: "fungi", name: "菌物界" }
   ];
   var CATEGORIES = window.CATEGORIES || [];
   var CATEGORY_MAP = window.CATEGORY_MAP || {};
@@ -21,8 +22,8 @@
   var ORDER = {};
   CATEGORIES.forEach(function (c, i) { ORDER[c.code] = i; });
 
-  var ALL = ENC.animals.concat(ENC.plants);
-  var COUNTS_BY_TAB = { animals: ENC.animals.length, plants: ENC.plants.length };
+  var ALL = ENC.animals.concat(ENC.plants, ENC.fungi || []);
+  var COUNTS_BY_TAB = { animals: ENC.animals.length, plants: ENC.plants.length, fungi: (ENC.fungi || []).length };
   var BASE_INDEX = {};
   ALL.forEach(function (entry, i) { BASE_INDEX[entry.id] = i; });
   var COUNTS_BY_CATEGORY = countBy(ALL, function (e) { return e.category; });
@@ -73,14 +74,14 @@
   }
   function imageOf(entry) {
     return typeof window.speciesImage === "function" ? window.speciesImage(entry)
-      : "assets/images/" + (entry.tab === "plants" ? "plants" : "animals") + "/" + entry.id + ".webp";
+      : "assets/images/" + (entry.tab === "animals" ? "animals" : "plants") + "/" + entry.id + ".webp";
   }
   function thumbOf(entry) {
-    return "assets/thumbs/" + (entry.tab === "plants" ? "plants" : "animals") + "/" + entry.id + ".webp";
+    return "assets/thumbs/" + (entry.tab === "animals" ? "animals" : "plants") + "/" + entry.id + ".webp";
   }
   function placeholderOf(entry) {
     return typeof window.speciesPlaceholder === "function" ? window.speciesPlaceholder(entry)
-      : "assets/images/placeholder-" + (entry.tab === "plants" ? "plant" : "animal") + ".svg";
+      : "assets/images/placeholder-" + (entry.tab === "animals" ? "animal" : "plant") + ".svg";
   }
   function categoryOf(entry) { return CATEGORY_MAP[entry.category] || { name: entry.category || "", icon: "" }; }
   function highlight(text, query) {
@@ -185,6 +186,7 @@
     statTotal: $("#stat-total"),
     statAnimals: $("#stat-animals"),
     statPlants: $("#stat-plants"),
+    statFungi: $("#stat-fungi"),
     statFamilies: $("#stat-families"),
     coverGallery: $("#cover-gallery"),
     categoryGrid: $("#category-grid"),
@@ -272,13 +274,14 @@
     var total = ALL.length;
     var families = Object.keys(FAMILY_SET).length;
     if (DEBUG) {
-      [el.statTotal, el.statAnimals, el.statPlants, el.statFamilies].forEach(function (node, i) {
-        if (node) node.textContent = [total, COUNTS_BY_TAB.animals, COUNTS_BY_TAB.plants, families][i];
+      [el.statTotal, el.statAnimals, el.statPlants, el.statFungi, el.statFamilies].forEach(function (node, i) {
+        if (node) node.textContent = [total, COUNTS_BY_TAB.animals, COUNTS_BY_TAB.plants, COUNTS_BY_TAB.fungi, families][i];
       });
     } else {
       animateNumber(el.statTotal, total);
       animateNumber(el.statAnimals, COUNTS_BY_TAB.animals);
       animateNumber(el.statPlants, COUNTS_BY_TAB.plants);
+      animateNumber(el.statFungi, COUNTS_BY_TAB.fungi);
       animateNumber(el.statFamilies, families);
     }
     if (el.heroIntro && SITE.intro) el.heroIntro.textContent = SITE.intro;
@@ -320,7 +323,7 @@
       var coverEntry = speciesById(covers[cat.code]) || ALL.filter(function (e) { return e.category === cat.code; })[0];
       var orders = orderFacets(cat.code).slice(0, 3).map(function (o) { return o.name; }).join(" · ");
       return '<button type="button" class="cat-card" data-cat="' + escapeHtml(cat.code) + '">' +
-        '<img src="' + escapeHtml(coverEntry ? thumbOf(coverEntry) : "") + '" alt="' + escapeHtml(cat.name) + '" loading="lazy" decoding="async">' +
+        '<img src="' + escapeHtml(coverEntry ? imageOf(coverEntry) : "") + '" alt="' + escapeHtml(cat.name) + '" loading="lazy" decoding="async">' +
         '<span class="cat-card__body">' +
           '<span class="cat-card__top"><span class="cat-card__name">' + escapeHtml(cat.name) + '</span>' +
           '<span class="cat-card__count">' + count + ' 种</span></span>' +
@@ -986,7 +989,7 @@ function renderModalRelations(entry) {
     raw = decodeURIComponent(raw || "");
     if (!raw || raw === "/") return { view: "home" };
     if (raw === "/tree") return { view: "tree" };
-    if (raw === "/animals" || raw === "/plants") return { view: "tab", tab: raw.slice(1) };
+    if (raw === "/animals" || raw === "/plants" || raw === "/fungi") return { view: "tab", tab: raw.slice(1) };
     var catMatch = raw.match(/^\/category\/([a-z0-9-]+)$/);
     if (catMatch && CATEGORY_MAP[catMatch[1]]) return { view: "category", code: catMatch[1] };
     var spMatch = raw.match(/^\/species\/([a-z0-9-]+)$/);

@@ -46,7 +46,7 @@ run("js/image-credits.js");
 
 const W = sandbox.window;
 const ENC = W.ENCYCLOPEDIA;
-const ALL = ENC.animals.concat(ENC.plants);
+const ALL = ENC.animals.concat(ENC.plants, ENC.fungi || []);
 const CREDITS = W.IMAGE_CREDITS || {};
 const REL = W.RELATIONS || { edges: [], types: {} };
 const CATEGORY_MAP = W.CATEGORY_MAP || {};
@@ -66,7 +66,7 @@ REL.edges.forEach(edge => {
 });
 
 function speciesImage(e) {
-  return "assets/images/" + (e.tab === "plants" ? "plants" : "animals") + "/" + e.id + ".webp";
+  return "assets/images/" + (e.tab === "animals" ? "animals" : "plants") + "/" + e.id + ".webp";
 }
 function categoryName(e) {
   const c = CATEGORY_MAP[e.category];

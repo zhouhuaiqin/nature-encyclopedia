@@ -40,7 +40,7 @@ for (const rel of [
 }
 for (const k of Object.keys(sandbox.window)) if (!(k in sandbox)) sandbox[k] = sandbox.window[k];
 const store = sandbox.window.ENCYCLOPEDIA;
-const all = [...store.animals, ...store.plants];
+const all = [...store.animals, ...store.plants, ...(store.fungi || [])];
 const categories = sandbox.window.CATEGORIES || [];
 const catMap = new Map(categories.map((c) => [c.code, c]));
 const charLen = (v) => [...String(v || "").trim()].length;
