@@ -35,7 +35,7 @@
   var RANKS = ["kingdom", "phylum", "class", "order", "family"];
   var RANK_CN = { kingdom: "界", phylum: "门", class: "纲", order: "目", family: "科" };
 
-  var BATCH_SIZE = 96;
+  var BATCH_SIZE = window.matchMedia && window.matchMedia("(max-width: 700px)").matches ? 48 : 96;
   var DEBUG = new URLSearchParams(location.search || "").get("debug") === "1";
   var state = {
     tab: "animals",
@@ -74,6 +74,9 @@
   function imageOf(entry) {
     return typeof window.speciesImage === "function" ? window.speciesImage(entry)
       : "assets/images/" + (entry.tab === "plants" ? "plants" : "animals") + "/" + entry.id + ".webp";
+  }
+  function thumbOf(entry) {
+    return "assets/thumbs/" + (entry.tab === "plants" ? "plants" : "animals") + "/" + entry.id + ".webp";
   }
   function placeholderOf(entry) {
     return typeof window.speciesPlaceholder === "function" ? window.speciesPlaceholder(entry)
@@ -317,7 +320,7 @@
       var coverEntry = speciesById(covers[cat.code]) || ALL.filter(function (e) { return e.category === cat.code; })[0];
       var orders = orderFacets(cat.code).slice(0, 3).map(function (o) { return o.name; }).join(" · ");
       return '<button type="button" class="cat-card" data-cat="' + escapeHtml(cat.code) + '">' +
-        '<img src="' + escapeHtml(coverEntry ? imageOf(coverEntry) : "") + '" alt="' + escapeHtml(cat.name) + '" loading="lazy" decoding="async">' +
+        '<img src="' + escapeHtml(coverEntry ? thumbOf(coverEntry) : "") + '" alt="' + escapeHtml(cat.name) + '" loading="lazy" decoding="async">' +
         '<span class="cat-card__body">' +
           '<span class="cat-card__top"><span class="cat-card__name">' + escapeHtml(cat.name) + '</span>' +
           '<span class="cat-card__count">' + count + ' 种</span></span>' +
@@ -334,7 +337,7 @@
       var cat = categoryOf(e);
       return '<button type="button" class="feat-card" data-id="' + escapeHtml(e.id) + '">' +
         '<span class="feat-card__num">' + String(i + 1).padStart(2, "0") + '</span>' +
-        '<span class="feat-card__img"><img src="' + escapeHtml(imageOf(e)) + '" alt="' + escapeHtml(e.name) + '" loading="lazy" decoding="async"></span>' +
+        '<span class="feat-card__img"><img src="' + escapeHtml(thumbOf(e)) + '" alt="' + escapeHtml(e.name) + '" loading="lazy" decoding="async"></span>' +
         '<span class="feat-card__body"><span class="feat-card__name">' + escapeHtml(e.name) + '</span>' +
         '<span class="feat-card__latin">' + escapeHtml(e.latin) + '</span>' +
         '<span class="feat-card__cat">' + escapeHtml(cat.name) + '</span></span></button>';
@@ -415,7 +418,7 @@
     items.forEach(function (it, i) {
       var d = Math.round(54 + 74 * Math.sqrt(it.count / max));
       var cover = speciesById(covers[it.cat.code]) || ALL.filter(function (e) { return e.category === it.cat.code; })[0];
-      var img = cover ? imageOf(cover) : "";
+      var img = cover ? thumbOf(cover) : "";
       html += '<button type="button" class="star-node' + (it.count >= 200 ? " star-node--big" : "") +
         '" data-cat="' + escapeHtml(it.cat.code) + '" style="left:' + pts[i].x.toFixed(2) + "%;top:" + pts[i].y.toFixed(2) + '%;">' +
         '<span class="star-node__disc" style="width:' + d + "px;height:" + d + 'px;">' +
@@ -500,7 +503,7 @@
           escapeHtml(entry.name) + "</option>";
       }).join("");
     var html = '<aside class="rel-focus">' +
-      '<div class="rel-focus__media">' + (focus ? '<img loading="lazy" src="' + escapeHtml(speciesImage(focus)) + '" alt="' + escapeHtml(focus.name) + '">' : "") + "</div>" +
+      '<div class="rel-focus__media">' + (focus ? '<img loading="lazy" src="' + escapeHtml(thumbOf(focus)) + '" alt="' + escapeHtml(focus.name) + '">' : "") + "</div>" +
       '<div class="rel-focus__body"><p class="rel-focus__label">ECOLOGICAL FOCUS</p>' +
       '<h3 class="rel-focus__name">' + escapeHtml(focus ? focus.name : "未知") + "</h3>" +
       '<p class="rel-focus__latin">' + escapeHtml(focus ? focus.latin : "") + "</p>" +
@@ -520,7 +523,7 @@
         if (!other) return;
         var info = REL.types[e.type] || { label: e.type, color: "#6f7a71" };
         html += '<article class="rel-card" data-rel-focus="' + escapeHtml(otherId) + '">' +
-          '<div class="rel-card__media"><img loading="lazy" src="' + escapeHtml(speciesImage(other)) + '" alt="' + escapeHtml(other.name) + '"></div>' +
+          '<div class="rel-card__media"><img loading="lazy" src="' + escapeHtml(thumbOf(other)) + '" alt="' + escapeHtml(other.name) + '"></div>' +
           '<div class="rel-card__body"><div class="rel-card__top"><span class="rel-card__name">' + escapeHtml(other.name) + "</span>" +
           '<span class="rel-type" style="background:' + info.color + '">' + escapeHtml(info.label) + "</span></div>" +
           '<p class="rel-card__dir">' + escapeHtml((isFrom ? "→ " : "← ") + other.name) + "</p>" +
@@ -684,7 +687,7 @@ function renderModalRelations(entry) {
       '<a class="card" href="#/species/' + encodeURIComponent(entry.id) + '" data-id="' + escapeHtml(entry.id) + '" aria-label="查看 ' + escapeHtml(entry.name) + ' 的详情">' +
         '<div class="card__media">' +
           '<span class="card__index">' + String(index + 1).padStart(2, "0") + "</span>" +
-          '<img class="card__img" src="' + escapeHtml(imageOf(entry)) + '" alt="' + escapeHtml(entry.name) + "（" + escapeHtml(entry.latin) + "）" + '" loading="lazy" decoding="async">' +
+          '<img class="card__img" src="' + escapeHtml(thumbOf(entry)) + '" alt="' + escapeHtml(entry.name) + "（" + escapeHtml(entry.latin) + "）" + '" loading="lazy" decoding="async">' +
           '<span class="card__tag">' + escapeHtml(cat.name) + "</span>" +
         "</div>" +
         '<div class="card__body">' +

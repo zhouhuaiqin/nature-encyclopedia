@@ -932,3 +932,16 @@ body { overflow-x: hidden; }
 @media (max-width: 380px) {
   .star-map { grid-template-columns: 1fr; }
 }
+
+/* ---------- v3.8 手机性能 ---------- */
+@media (max-width: 700px) {
+  .site-head { backdrop-filter: none; background: var(--paper); }
+  .site-head { box-shadow: none; }
+  .card, .cat-card, .feat-card, .daily-card, .rel-card, .rel-focus, .cover-figure { box-shadow: none; }
+  .card__media::before { display: none; }
+  .cover-gallery { transform: none !important; will-change: auto; }
+  .card { transition: none; }
+  .card:hover { transform: none; }
+  .section, .featured { content-visibility: auto; contain-intrinsic-size: 900px; }
+  .cover { content-visibility: auto; contain-intrinsic-size: 820px; }
+}
