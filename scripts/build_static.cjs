@@ -293,12 +293,15 @@ write("sitemap.xml", sitemap);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${BASE}/sitemap.xml\n`);
 write(".nojekyll", "");
 
-// 同步首页 head 中的占位站点地址
+// 同步首页 head 中的站点地址（占位符与历史仓库地址）
 const indexPath = path.join(ROOT, "index.html");
 let homeHtml = fs.readFileSync(indexPath, "utf8");
 if (homeHtml.includes("YOUR-USERNAME.github.io/nature-encyclopedia")) {
   homeHtml = homeHtml.split("https://YOUR-USERNAME.github.io/nature-encyclopedia").join(BASE);
-  fs.writeFileSync(indexPath, homeHtml, "utf8");
 }
+if (homeHtml.includes("https://zhouhuaiqin.github.io/-")) {
+  homeHtml = homeHtml.split("https://zhouhuaiqin.github.io/-").join(BASE);
+}
+fs.writeFileSync(indexPath, homeHtml, "utf8");
 
 console.log("generated species:", count, "| total urls:", urls.length);
