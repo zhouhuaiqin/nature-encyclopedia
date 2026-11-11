@@ -36,7 +36,7 @@
   var RANKS = ["kingdom", "phylum", "class", "order", "family"];
   var RANK_CN = { kingdom: "界", phylum: "门", class: "纲", order: "目", family: "科" };
 
-  var BATCH_SIZE = window.matchMedia && window.matchMedia("(max-width: 700px)").matches ? 48 : 96;
+  var BATCH_SIZE = window.matchMedia && window.matchMedia("(max-width: 700px)").matches ? 24 : 96;
   var DEBUG = new URLSearchParams(location.search || "").get("debug") === "1";
   var state = {
     tab: "animals",

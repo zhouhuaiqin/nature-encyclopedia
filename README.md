@@ -123,3 +123,12 @@ nature-encyclopedia/
 
   然后确认 scripts/validate-data.mjs 的图片检查通过（站点引用 .webp）。
 - 当前仓库（含 Git 历史）约 250–300 MB，在 GitHub Pages 1 GB 限制内；首次推送会较慢。
+
+## 数据分包与性能（v3.9）
+
+- 首屏只加载 `data/index.js`（约 1.27 MB，gzip 后约 0.67 MB），包含物种名称、分类、标签与简介；
+- 完整描述、栖息、分布、保护级别、趣味知识在打开详情时按类群加载 `data/details/<category>.js`；
+- 图片版权 `js/image-credits.js` 首次打开详情时才加载；
+- 卡片/精选/星图使用 600px 缩略图，详情与分类大图保留 900px，兼顾清晰度与速度；
+- 手机端首批卡片 24 张，滚动继续加载。
+- 修改数据后运行 `node scripts/build_static.cjs` 会同时重建索引与静态页。
