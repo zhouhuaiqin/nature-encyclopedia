@@ -943,9 +943,55 @@ function renderModalRelations(entry) {
     el.modalScroll.scrollTop = 0;
   }
   var modalOpen = false;
+  var detailLoaded = {};
+  var detailLoading = {};
+  var detailQueue = {};
+  var creditsLoading = false;
+  var creditsQueue = [];
+
+  function loadCredits(cb) {
+    if (window.IMAGE_CREDITS) { cb(); return; }
+    creditsQueue.push(cb);
+    if (creditsLoading) return;
+    creditsLoading = true;
+    var script = document.createElement("script");
+    script.src = "js/image-credits.js";
+    script.onload = script.onerror = function () {
+      creditsLoading = false;
+      var queue = creditsQueue.splice(0);
+      queue.forEach(function (fn) { fn(); });
+    };
+    document.head.appendChild(script);
+  }
+
+  function ensureDetails(entry, cb) {
+    if (entry.description) { loadCredits(cb); return; }
+    var category = entry.category;
+    if (detailLoaded[category]) { loadCredits(cb); return; }
+    var queue = detailQueue[category] || (detailQueue[category] = []);
+    queue.push(cb);
+    if (detailLoading[category]) return;
+    detailLoading[category] = true;
+    var script = document.createElement("script");
+    script.src = "data/details/" + category + ".js";
+    script.onload = script.onerror = function () {
+      detailLoading[category] = false;
+      detailLoaded[category] = true;
+      var waiting = detailQueue[category] || [];
+      detailQueue[category] = [];
+      waiting.forEach(function (fn) { loadCredits(fn); });
+    };
+    document.head.appendChild(script);
+  }
+
   function openModalById(id, opts) {
     var entry = speciesById(id);
     if (!entry) return false;
+    ensureDetails(entry, function () { openModalNow(entry, opts); });
+    return true;
+  }
+
+  function openModalNow(entry, opts) {
     if (!modalOpen) lastFocused = document.activeElement;
     fillModal(entry);
     el.modal.hidden = false;
@@ -977,9 +1023,11 @@ function renderModalRelations(entry) {
     if (!id) return;
     var entry = speciesById(id);
     if (!entry) return;
-    fillModal(entry);
-    history.replaceState(null, "", "#/species/" + encodeURIComponent(entry.id));
-    document.title = entry.name + " · " + (SITE.title || "自然图鉴");
+    ensureDetails(entry, function () {
+      fillModal(entry);
+      history.replaceState(null, "", "#/species/" + encodeURIComponent(entry.id));
+      document.title = entry.name + " · " + (SITE.title || "自然图鉴");
+    });
   }
 
   /* ---------- hash routing ---------- */

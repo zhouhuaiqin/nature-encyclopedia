@@ -50,6 +50,22 @@
     });
   };
 
+  /** 合并某类群的详情包（description/栖息/分布/保护/details/facts） */
+  window.registerDetails = function (category, map) {
+    var buckets = [store.animals, store.plants, store.fungi || []];
+    for (var b = 0; b < buckets.length; b += 1) {
+      for (var i = 0; i < buckets[b].length; i += 1) {
+        var item = buckets[b][i];
+        if (item.category !== category) continue;
+        var detail = map[item.id];
+        if (!detail) continue;
+        for (var k in detail) {
+          if (Object.prototype.hasOwnProperty.call(detail, k)) item[k] = detail[k];
+        }
+      }
+    }
+  };
+
   /** 物种图片相对路径 */
   window.speciesImage = function (entry) {
     var tab = entry && entry.tab === "animals" ? "animals" : "plants";

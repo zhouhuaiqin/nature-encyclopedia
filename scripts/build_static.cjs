@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
+const { execFileSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "..");
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, "site.config.json"), "utf8"));
@@ -304,4 +305,5 @@ if (homeHtml.includes("https://zhouhuaiqin.github.io/-")) {
 }
 fs.writeFileSync(indexPath, homeHtml, "utf8");
 
+execFileSync(process.execPath, [path.join(__dirname, "build_index.cjs")], { stdio: "inherit" });
 console.log("generated species:", count, "| total urls:", urls.length);
