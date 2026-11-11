@@ -24,7 +24,7 @@ node scripts/build_static.cjs
 ```bash
 git init -b main
 git add .
-git commit -m "自然图鉴：2663 物种静态站 + 搜索"
+git commit -m "自然图鉴：2669 物种静态站 + 搜索"
 git remote add origin https://github.com/你的用户名/nature-encyclopedia.git
 git push -u origin main
 ```
@@ -53,7 +53,7 @@ git push -u origin main
 
 ## 4. 站点结构（已生成）
 - `index.html`：交互式图鉴首页
-- `species/<id>.html`：2663 个物种独立页（含 title/description/canonical/OG/JSON-LD）
+- `species/<id>.html`：2669 个物种独立页（含 title/description/canonical/OG/JSON-LD）
 - `species/index.html`：全部物种索引（爬虫入口）
 - `search.html` + `search-index.js`：站内搜索（中文名/别名/学名/标签）
 - `sitemap.xml` / `robots.txt`：提交给搜索引擎
@@ -76,6 +76,6 @@ GitHub Pages 在中国大陆访问不稳定，百度收录也偏慢。面向国�
 - [ ] `site.config.json` 的 `siteUrl` 已改
 - [ ] `node scripts/build_static.cjs` 已运行
 - [ ] GitHub Pages 部署成功
-- [ ] 打开 `/species/index.html` 能看到 2663 个链接
+- [ ] 打开 `/species/index.html` 能看到 2669 个链接
 - [ ] `/sitemap.xml` 可访问且包含 2661 条 URL
 - [ ] 已向 Google/Bing/百度提交 sitemap
